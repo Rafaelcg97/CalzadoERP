@@ -1,0 +1,54 @@
+﻿@model CalzadoERP.Model.Sku
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Sku</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NombreSku)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NombreSku)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ColorSku)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ColorSku)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PrecioUnitarioSku)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PrecioUnitarioSku)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UnidadSku)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UnidadSku)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ComentariosSku)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ComentariosSku)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdProveedorNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdProveedorNavigation.IdProveedor)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.IdSku">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

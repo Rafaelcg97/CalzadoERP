@@ -1,0 +1,59 @@
+﻿@model IEnumerable<CalzadoERP.Model.Orden>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaCreacionOrden)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaEntregaOrden)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StatusOrden)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaCierreOrden)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdClienteNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaCreacionOrden)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaEntregaOrden)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StatusOrden)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaCierreOrden)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdClienteNavigation.IdCliente)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdOrden">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdOrden">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdOrden">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

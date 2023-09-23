@@ -1,0 +1,48 @@
+﻿@model CalzadoERP.Model.Estilo
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Estilo</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NombreEstilo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NombreEstilo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ColorEstilo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ColorEstilo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.GeneroEstilo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.GeneroEstilo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PrecioEstilo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PrecioEstilo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ComentariosEstilo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ComentariosEstilo)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.IdEstilo">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

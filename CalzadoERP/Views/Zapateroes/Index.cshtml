@@ -1,0 +1,65 @@
+﻿@model IEnumerable<CalzadoERP.Model.Zapatero>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreZapatero)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DireccionZapatero)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdentificacionZapatero)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EstadoZapatero)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaAsociacionZapatero)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaTerminacionZapatero)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreZapatero)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DireccionZapatero)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdentificacionZapatero)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EstadoZapatero)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaAsociacionZapatero)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaTerminacionZapatero)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdZapatero">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdZapatero">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdZapatero">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,65 @@
+﻿@model IEnumerable<CalzadoERP.Model.Sku>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreSku)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ColorSku)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrecioUnitarioSku)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UnidadSku)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ComentariosSku)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdProveedorNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreSku)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ColorSku)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrecioUnitarioSku)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnidadSku)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ComentariosSku)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdProveedorNavigation.IdProveedor)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdSku">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdSku">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdSku">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

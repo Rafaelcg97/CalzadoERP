@@ -1,0 +1,48 @@
+﻿@model CalzadoERP.Model.Lote
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Lote</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CantidadLote)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CantidadLote)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PiezasTerminadasLote)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PiezasTerminadasLote)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdEstiloNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdEstiloNavigation.IdEstilo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdOrdenNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdOrdenNavigation.IdOrden)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdZapateroNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdZapateroNavigation.IdZapatero)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.IdLote">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

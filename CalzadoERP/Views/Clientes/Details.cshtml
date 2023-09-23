@@ -1,0 +1,54 @@
+﻿@model CalzadoERP.Model.Cliente
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Cliente</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NombreCliente)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NombreCliente)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DireccionCliente)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DireccionCliente)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TelefonoCliente1)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TelefonoCliente1)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TelefonoCliente2)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TelefonoCliente2)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaCreacionCliente)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FechaCreacionCliente)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ComentariosCliente)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ComentariosCliente)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.IdCliente">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

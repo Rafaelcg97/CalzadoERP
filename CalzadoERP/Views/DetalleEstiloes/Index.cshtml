@@ -1,0 +1,53 @@
+﻿@model IEnumerable<CalzadoERP.Model.DetalleEstilo>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdEstilo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CantidadSkuEstilo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdDetalleEstiloNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdSkuNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdEstilo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CantidadSkuEstilo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdDetalleEstiloNavigation.IdEstilo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdSkuNavigation.IdSku)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdDetalleEstilo">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdDetalleEstilo">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdDetalleEstilo">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
