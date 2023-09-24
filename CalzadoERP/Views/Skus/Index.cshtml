@@ -3,63 +3,72 @@
 @{
     ViewData["Title"] = "Index";
 }
+<body class="backgroundb">
+    <h1 class="text-light">Administrar SKU</h1>
+    <br />
+    <p>
+        <a asp-action="Create">Crear nuevo SKU</a>
+    </p>
+    <br />
+    <section>
+        <nav class="navbar bg-dark">
+            <div class="container">
+                <h1 class="text-light">Buscar SKU : </h1>
+                <form class="d-flex" role="search" asp-action="GetSkuByNombre">
+                    <input id="nombre" name="nombre" class="form-control me-2" type="search" placeholder="Buscar por nombre" aria-label="Buscar por nombre">
+                    <button class="btn btn-outline-success" type="submit">Buscar</button>
+                </form>
+            </div>
+        </nav>
+    </section>
+    <br />
+    <table class="table text-light ">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.NombreSku)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ColorSku)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PrecioUnitarioSku)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UnidadSku)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ComentariosSku)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in (IEnumerable<dynamic>)(ViewData["skus"])!)
+            {
+                <tr>
+                    <td>
+                        @Html.Label("NombreSku", (string)@item.NombreSku)
+                    </td>
+                    <td>
+                        @Html.Label("ColorSku", (string)@item.ColorSku)
+                    </td>
+                    <td>
+                        @Html.Label("PrecioUnitarioSku", ((Decimal)@item.PrecioUnitarioSku).ToString("C3"))
+                    </td>
+                    <td>
+                        @Html.Label("UnidadSku", (string)@item.UnidadSku)
+                    </td>
+                    <td>
+                        @Html.Label("ComentariosSku", (string)@item.ComentariosSku)
+                    </td>
+                    <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdSku">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.IdSku">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.IdSku">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.NombreSku)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ColorSku)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PrecioUnitarioSku)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UnidadSku)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ComentariosSku)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdProveedorNavigation)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NombreSku)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ColorSku)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PrecioUnitarioSku)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UnidadSku)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ComentariosSku)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdProveedorNavigation.IdProveedor)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdSku">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdSku">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdSku">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+</body>

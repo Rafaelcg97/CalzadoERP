@@ -3,57 +3,79 @@
 @{
     ViewData["Title"] = "Index";
 }
+<body class="backgroundb">
+    <h1 class="text-light">Administrar Ordenes</h1>
+    <br />
+    <p>
+        <a asp-action="Create">Crear nueva Orden</a>
+    </p>
+    <br />
+    <section>
+        <nav class="navbar bg-dark">
+            <div class="container">
+                <h1 class="text-light">Buscar Cliente : </h1>
+                <form class="d-flex" role="search" asp-action="GetOrdenByNumero">
+                    <input id="numero" name="numero" class="form-control me-2" type="search" placeholder="Buscar por id de orden" aria-label="Buscar por id de orden">
+                    <button class="btn btn-outline-success" type="submit">Buscar</button>
+                </form>
+            </div>
+        </nav>
+    </section>
+    <br />
+    <table class="table text-light ">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdOrden)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FechaCreacionOrden)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FechaEntregaOrden)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StatusOrden)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FechaCierreOrden)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdClienteNavigation)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in (IEnumerable<dynamic>)(ViewData["ordenes"])!)
+            {
+                <tr>
+                    <td>
+                         @Html.Label("idOrden", ((int)@item.IdOrden).ToString())
+                    </td>
+                    <td>
+                        @Html.Label("FechaCreacionOrden", ((DateTime) @item.FechaCreacionOrden).ToString())
+                    </td>
+                    <td>
+                        @*@Html.Label("FechaEntregaOrden", ((DateTime) @item.FechaEntregaOrden).ToString())*@
+                    </td>
+                    <td>
+                        @Html.Label("StatusOrden", (string)@item.StatusOrden)
+                    </td>
+                    <td>
+                      @*  @Html.Label("FechaCierreOrden", ((DateTime) @item.FechaCierreOrden).ToString())*@
+                    </td>
+                    <td>
+                        @Html.Label("IdClienteNavigation", (string)@item.IdClienteNavigation)
+                    </td>
+                    <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdOrden">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.IdOrden">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.IdOrden">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.FechaCreacionOrden)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FechaEntregaOrden)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StatusOrden)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FechaCierreOrden)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdClienteNavigation)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaCreacionOrden)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaEntregaOrden)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StatusOrden)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaCierreOrden)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdClienteNavigation.IdCliente)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdOrden">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdOrden">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdOrden">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+</body>

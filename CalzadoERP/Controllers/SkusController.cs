@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CalzadoERP.Model;
+using Microsoft.IdentityModel.Tokens;
 
 namespace CalzadoERP.Controllers
 {
@@ -19,10 +20,30 @@ namespace CalzadoERP.Controllers
         }
 
         // GET: Skus
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var eRPContext = _context.Skus.Include(s => s.IdProveedorNavigation);
-            return View(await eRPContext.ToListAsync());
+            List<Sku> listaSku = _context.Skus.ToList();
+
+            ViewData["skus"] = listaSku;
+
+            return View();
+        }
+
+        public IActionResult GetSkuByNombre(string nombre)
+        {
+            List<Sku> listaSku = new List<Sku>();
+
+            if (!nombre.IsNullOrEmpty())
+            {
+                listaSku = (from e in _context.Skus
+                                 where e.NombreSku.Contains(nombre)
+                                 select e).ToList();
+            }
+
+            ViewData["skus"] = listaSku;
+
+            return View("Index");
+
         }
 
         // GET: Skus/Details/5
@@ -58,12 +79,12 @@ namespace CalzadoERP.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IdSku,NombreSku,ColorSku,IdProveedor,PrecioUnitarioSku,UnidadSku,ComentariosSku")] Sku sku)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(sku);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
+
+            _context.Add(sku);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+
+
             ViewData["IdProveedor"] = new SelectList(_context.Proveedors, "IdProveedor", "IdProveedor", sku.IdProveedor);
             return View(sku);
         }

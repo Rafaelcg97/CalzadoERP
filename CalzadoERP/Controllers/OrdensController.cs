@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CalzadoERP.Model;
+using Microsoft.IdentityModel.Tokens;
 
 namespace CalzadoERP.Controllers
 {
@@ -19,10 +20,30 @@ namespace CalzadoERP.Controllers
         }
 
         // GET: Ordens
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var eRPContext = _context.Ordens.Include(o => o.IdClienteNavigation);
-            return View(await eRPContext.ToListAsync());
+            List<Orden> listaOrdenes = _context.Ordens.ToList();
+
+            ViewData["ordenes"] = listaOrdenes;
+
+            return View();
+        }
+
+        public IActionResult GetOrdenByNumero(int numero)
+        {
+            List<Orden> listaOrdenes = new List<Orden>();
+
+            if (numero > 0)
+            {
+                listaOrdenes = (from e in _context.Ordens
+                                 where e.IdOrden.Equals(numero)
+                                 select e).ToList();
+            }
+
+            ViewData["ordenes"] = listaOrdenes;
+
+            return View("Index");
+
         }
 
         // GET: Ordens/Details/5
@@ -58,12 +79,17 @@ namespace CalzadoERP.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IdOrden,IdCliente,FechaCreacionOrden,FechaEntregaOrden,StatusOrden,FechaCierreOrden")] Orden orden)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(orden);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
+            //if (ModelState.IsValid)
+            //{
+            //    _context.Add(orden);
+            //    await _context.SaveChangesAsync();
+            //    return RedirectToAction(nameof(Index));
+            //}
+
+            _context.Add(orden);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+
             ViewData["IdCliente"] = new SelectList(_context.Clientes, "IdCliente", "IdCliente", orden.IdCliente);
             return View(orden);
         }
