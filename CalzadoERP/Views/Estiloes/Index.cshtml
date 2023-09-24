@@ -3,57 +3,73 @@
 @{
     ViewData["Title"] = "Index";
 }
+<body class="backgroundb">
+    <h1 class="text-light">Administrar Productos</h1>
+    <br />
+    <p>
+        <a asp-action="Create">Crear nuevo estilo</a>
+    </p>
+    <br />
+    <section>
+        <nav class="navbar bg-dark">
+            <div class="container">
+                <h1 class="text-light">Buscar Estilo : </h1>
+                <form class="d-flex" role="search" asp-action="GetEstiloByNombre">
+                    <input id="nombre" name="nombre" class="form-control me-2" type="search" placeholder="Buscar por nombre" aria-label="Buscar por nombre">
+                    <button class="btn btn-outline-success" type="submit">Buscar</button>
+                </form>
+            </div>
+        </nav>
+    </section>
+    <br />
+    <table class="table text-light ">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.NombreEstilo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ColorEstilo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.GeneroEstilo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PrecioEstilo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ComentariosEstilo)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in (IEnumerable<dynamic>)(ViewData["estilos"])!)
+            {
+                <tr>
+                    <td>
+                        @Html.Label("NombreEstilo", (string)@item.NombreEstilo)
+                    </td>
+                    <td>
+                        @Html.Label("ColorEstilo", (string)@item.ColorEstilo)
+                    </td>
+                    <td>
+                        @Html.Label("GeneroEstilo", (string)@item.GeneroEstilo)
+                    </td>
+                    <td>
+                        @Html.Label("PrecioEstilo", ((Decimal)@item.PrecioEstilo).ToString("C3"))
+                    </td>
+                    <td>
+                        @Html.Label("ComentariosEstilo", (string)@item.ComentariosEstilo)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.IdEstilo">Editar</a> |
+                        <a asp-action="Details" asp-route-id="@item.IdEstilo">Detalles</a> |
+                        <a asp-action="Delete" asp-route-id="@item.IdEstilo">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.NombreEstilo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ColorEstilo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.GeneroEstilo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PrecioEstilo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ComentariosEstilo)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NombreEstilo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ColorEstilo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GeneroEstilo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PrecioEstilo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ComentariosEstilo)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdEstilo">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdEstilo">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdEstilo">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+</body>

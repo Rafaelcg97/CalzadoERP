@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CalzadoERP.Model;
+using Microsoft.IdentityModel.Tokens;
 
 namespace CalzadoERP.Controllers
 {
@@ -19,12 +20,32 @@ namespace CalzadoERP.Controllers
         }
 
         // GET: Estiloes
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-              return _context.Estilos != null ? 
-                          View(await _context.Estilos.ToListAsync()) :
-                          Problem("Entity set 'ERPContext.Estilos'  is null.");
+            List<Estilo> listaEstilos = _context.Estilos.ToList();
+
+            ViewData["estilos"] = listaEstilos;
+
+            return View();
         }
+
+        public IActionResult GetEstiloByNombre(string nombre)
+        {
+            List<Estilo> listaEstilos = new List<Estilo>();
+
+            if (!nombre.IsNullOrEmpty())
+            {
+                listaEstilos = (from e in _context.Estilos
+                                             where e.NombreEstilo.Contains(nombre)
+                                             select e).ToList();
+            }
+
+            ViewData["estilos"] = listaEstilos;
+
+            return View("Index");
+
+        }
+
 
         // GET: Estiloes/Details/5
         public async Task<IActionResult> Details(int? id)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
@@ -15,19 +16,24 @@ public partial class Estilo
 
     [Column("nombreEstilo")]
     [StringLength(50)]
+    [DisplayName("Nombre del Estilo")]
     public string NombreEstilo { get; set; } = null!;
 
+    [DisplayName("Color")]
     [Column("colorEstilo")]
     [StringLength(50)]
     public string ColorEstilo { get; set; } = null!;
 
+    [DisplayName("Genero")]
     [Column("generoEstilo")]
     [StringLength(9)]
     public string GeneroEstilo { get; set; } = null!;
 
+    [DisplayName("Precio de venta")]
     [Column("precioEstilo", TypeName = "money")]
     public decimal PrecioEstilo { get; set; }
 
+    [DisplayName("Comentarios")]
     [Column("comentariosEstilo", TypeName = "text")]
     public string? ComentariosEstilo { get; set; }
 
