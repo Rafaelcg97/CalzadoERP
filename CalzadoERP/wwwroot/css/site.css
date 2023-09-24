@@ -16,3 +16,51 @@ html {
 body {
   margin-bottom: 60px;
 }
+.backgroundb {
+    background-color: black;
+}
+
+.footerc {
+    background-color: azure;
+    margin-top: 225px;
+    padding-bottom: auto;
+}
+
+.footerprod {
+    background-color: azure;
+}
+
+.contenedor {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+}
+
+.imgback {
+    opacity: 0.5;
+}
+
+.texto {
+    font-size: 8rem;
+}
+
+.cards {
+    width: 50%;
+    margin: auto;
+}
+
+.padcards {
+    padding: 30px;
+}
+
+.centrado {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ffe599;
+}
+
+.txttable {
+    text-align: right;
+}
