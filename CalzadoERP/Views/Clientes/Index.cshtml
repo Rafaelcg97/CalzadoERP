@@ -3,63 +3,79 @@
 @{
     ViewData["Title"] = "Index";
 }
+<body class="backgroundb">
+    <h1 class="text-light">Administrar Clientes</h1>
+    <br />
+    <p>
+        <a asp-action="Create">Crear nuevo cliente</a>
+    </p>
+    <br />
+    <section>
+        <nav class="navbar bg-dark">
+            <div class="container">
+                <h1 class="text-light">Buscar Cliente : </h1>
+                <form class="d-flex" role="search" asp-action="GetClienteByNombre">
+                    <input id="nombre" name="nombre" class="form-control me-2" type="search" placeholder="Buscar por nombre" aria-label="Buscar por nombre">
+                    <button class="btn btn-outline-success" type="submit">Buscar</button>
+                </form>
+            </div>
+        </nav>
+    </section>
+    <br />
+    <table class="table text-light ">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.NombreCliente)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DireccionCliente)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TelefonoCliente1)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TelefonoCliente2)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FechaCreacionCliente)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ComentariosCliente)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in (IEnumerable<dynamic>)(ViewData["clientes"])!)
+            {
+                <tr>
+                    <td>
+                        @Html.Label("NombreCliente", (string)@item.NombreCliente)
+                    </td>
+                    <td>
+                        @Html.Label("ColorCliente", (string)@item.DireccionCliente)
+                    </td>
+                    <td>
+                        @Html.Label("TelefonoCliente1", (string)@item.TelefonoCliente1)
+                    </td>
+                    <td>
+                        @Html.Label("TelefonoCliente2", (string)@item.TelefonoCliente2)
+                    </td>
+                    <td>
+                        @Html.Label("FechaCreacionCliente", ((DateTime) @item.FechaCreacionCliente).ToString())
+                    </td>
+                    <td>
+                        @Html.Label("ComentariosCliente", (string)@item.ComentariosCliente)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.IdCliente">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.IdCliente">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.IdCliente">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.NombreCliente)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DireccionCliente)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TelefonoCliente1)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TelefonoCliente2)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FechaCreacionCliente)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ComentariosCliente)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NombreCliente)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DireccionCliente)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TelefonoCliente1)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TelefonoCliente2)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaCreacionCliente)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ComentariosCliente)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdCliente">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdCliente">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdCliente">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+</body>

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CalzadoERP.Model;
+using Microsoft.IdentityModel.Tokens;
 
 namespace CalzadoERP.Controllers
 {
@@ -19,11 +20,30 @@ namespace CalzadoERP.Controllers
         }
 
         // GET: Zapateroes
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-              return _context.Zapateros != null ? 
-                          View(await _context.Zapateros.ToListAsync()) :
-                          Problem("Entity set 'ERPContext.Zapateros'  is null.");
+            List<Zapatero> listaZapateros = _context.Zapateros.ToList();
+
+            ViewData["zapateros"] = listaZapateros;
+
+            return View();
+        }
+
+        public IActionResult GetZapateroByNombre(string nombre)
+        {
+            List<Zapatero> listaZapateros = new List<Zapatero>();
+
+            if (!nombre.IsNullOrEmpty())
+            {
+                listaZapateros = (from e in _context.Zapateros
+                                    where e.NombreZapatero.Contains(nombre)
+                                    select e).ToList();
+            }
+
+            ViewData["zapateros"] = listaZapateros;
+
+            return View("Index");
+
         }
 
         // GET: Zapateroes/Details/5

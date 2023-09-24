@@ -3,51 +3,67 @@
 @{
     ViewData["Title"] = "Index";
 }
+<body class="backgroundb">
+    <h1 class="text-light">Administrar Proveedores</h1>
+    <br />
+    <p>
+        <a asp-action="Create">Crear nuevo proveedor</a>
+    </p>
+    <br />
+    <section>
+        <nav class="navbar bg-dark">
+            <div class="container">
+                <h1 class="text-light">Buscar Proveedor : </h1>
+                <form class="d-flex" role="search" asp-action="GetProveedorByNombre">
+                    <input id="nombre" name="nombre" class="form-control me-2" type="search" placeholder="Buscar por nombre" aria-label="Buscar por nombre">
+                    <button class="btn btn-outline-success" type="submit">Buscar</button>
+                </form>
+            </div>
+        </nav>
+    </section>
+    <br />
+    <table class="table text-light ">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.NombreProveedor)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DireccionProveedor)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TelefonoProveedor1)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TelefonoProveedor2)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in (IEnumerable<dynamic>)(ViewData["proveedores"])!)
+            {
+                <tr>
+                    <td>
+                        @Html.Label("NombreEstilo", (string)@item.NombreProveedor)
+                    </td>
+                    <td>
+                        @Html.Label("ColorEstilo", (string)@item.DireccionProveedor)
+                    </td>
+                    <td>
+                        @Html.Label("GeneroEstilo", (string)@item.TelefonoProveedor1)
+                    </td>
+                    <td>
+                        @Html.Label("ComentariosEstilo", (string)@item.TelefonoProveedor2)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.IdProveedor">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.IdProveedor">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.IdProveedor">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.NombreProveedor)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DireccionProveedor)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TelefonoProveedor1)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TelefonoProveedor2)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NombreProveedor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DireccionProveedor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TelefonoProveedor1)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TelefonoProveedor2)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdProveedor">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdProveedor">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdProveedor">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+</body>
