@@ -39,7 +39,10 @@ namespace CalzadoERP.Controllers
                                  where e.NombreSku.Contains(nombre)
                                  select e).ToList();
             }
-
+            if (nombre.IsNullOrEmpty())
+            {
+                listaSku = _context.Skus.ToList();
+            }
             ViewData["skus"] = listaSku;
 
             return View("Index");

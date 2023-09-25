@@ -4,8 +4,6 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
-
 <h4>Orden</h4>
 <hr />
 <div class="row">
@@ -36,16 +34,15 @@
                 <input asp-for="FechaCierreOrden" class="form-control" />
                 <span asp-validation-for="FechaCierreOrden" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+            <div class="form-group py-3">
+                <input type="submit" value="Crear una orden " class="btn btn-primary" />
+                <a class="px-3" asp-action="Index">Volver</a>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

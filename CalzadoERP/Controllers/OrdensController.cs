@@ -39,6 +39,11 @@ namespace CalzadoERP.Controllers
                                  where e.IdOrden.Equals(numero)
                                  select e).ToList();
             }
+            if (numero == 0)
+            {
+                listaOrdenes = (from e in _context.Ordens
+                                select e).ToList();
+            }
 
             ViewData["ordenes"] = listaOrdenes;
 

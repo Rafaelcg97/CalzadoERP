@@ -39,6 +39,10 @@ namespace CalzadoERP.Controllers
                                  where e.NombreProveedor.Contains(nombre)
                                  select e).ToList();
             }
+            if (nombre.IsNullOrEmpty())
+            {
+                listaProveedores = _context.Proveedors.ToList();
+            }
 
             ViewData["proveedores"] = listaProveedores;
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
@@ -15,23 +16,28 @@ public partial class Sku
 
     [Column("nombreSku")]
     [StringLength(50)]
+    [DisplayName("SKU")]
     public string NombreSku { get; set; } = null!;
 
     [Column("colorSku")]
     [StringLength(50)]
+    [DisplayName("Color")]
     public string ColorSku { get; set; } = null!;
 
     [Column("idProveedor")]
     public int IdProveedor { get; set; }
 
     [Column("precioUnitarioSku", TypeName = "money")]
+    [DisplayName("Precio Unitario")]
     public decimal PrecioUnitarioSku { get; set; }
 
     [Column("unidadSku")]
     [StringLength(50)]
+    [DisplayName("Unidades")]
     public string UnidadSku { get; set; } = null!;
 
     [Column("comentariosSku", TypeName = "text")]
+    [DisplayName("Comentarios")]
     public string? ComentariosSku { get; set; }
 
     [InverseProperty("IdSkuNavigation")]

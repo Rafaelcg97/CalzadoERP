@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Index";
 }
-<body class="backgroundb">
+<body >
     <h1 class="text-light">Administrar Zapateros</h1>
     <br />
     <p>
@@ -69,9 +69,9 @@
                        @* @Html.Label("FechaTerminacionZapatero", ((DateTime) @item.FechaTerminacionZapatero).ToString())*@
                     </td>
                     <td>
-                        <a asp-action="Edit" asp-route-id="@item.IdZapatero">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.IdZapatero">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.IdZapatero">Delete</a>
+                        <a asp-action="Edit" asp-route-id="@item.IdZapatero">Editar</a> |
+                        <a asp-action="Details" asp-route-id="@item.IdZapatero">Detalles</a> |
+                        <a asp-action="Delete" asp-route-id="@item.IdZapatero">Eliminar</a>
                     </td>
                 </tr>
             }

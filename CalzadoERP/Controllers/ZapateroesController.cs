@@ -39,6 +39,10 @@ namespace CalzadoERP.Controllers
                                     where e.NombreZapatero.Contains(nombre)
                                     select e).ToList();
             }
+            if (nombre.IsNullOrEmpty())
+            {
+                listaZapateros = _context.Zapateros.ToList();
+            }
 
             ViewData["zapateros"] = listaZapateros;
 

@@ -31,7 +31,7 @@ body {
 }
 
 .contenedor {
-    position: relative;
+    position: absolute  ;
     display: inline-block;
     text-align: center;
 }

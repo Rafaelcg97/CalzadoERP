@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Index";
 }
-<body class="backgroundb">
+<body >
     <h1 class="text-light">Administrar SKU</h1>
     <br />
     <p>
@@ -62,9 +62,9 @@
                         @Html.Label("ComentariosSku", (string)@item.ComentariosSku)
                     </td>
                     <td>
-                    <a asp-action="Edit" asp-route-id="@item.IdSku">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.IdSku">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.IdSku">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@item.IdSku">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.IdSku">Detalles</a> |
+                    <a asp-action="Delete" asp-route-id="@item.IdSku">Eliminar</a>
                     </td>
                 </tr>
             }

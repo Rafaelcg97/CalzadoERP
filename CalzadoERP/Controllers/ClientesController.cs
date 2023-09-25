@@ -40,6 +40,11 @@ namespace CalzadoERP.Controllers
                                 select e).ToList();
             }
 
+            if (nombre.IsNullOrEmpty())
+            {
+                listaClientes = _context.Clientes.ToList();
+            }
+
             ViewData["clientes"] = listaClientes;
 
             return View("Index");

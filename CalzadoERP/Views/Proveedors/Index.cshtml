@@ -1,9 +1,9 @@
 ﻿@model IEnumerable<CalzadoERP.Model.Proveedor>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Proveedores";
 }
-<body class="backgroundb">
+<body>
     <h1 class="text-light">Administrar Proveedores</h1>
     <br />
     <p>
@@ -57,9 +57,9 @@
                         @Html.Label("ComentariosEstilo", (string)@item.TelefonoProveedor2)
                     </td>
                     <td>
-                        <a asp-action="Edit" asp-route-id="@item.IdProveedor">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.IdProveedor">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.IdProveedor">Delete</a>
+                        <a asp-action="Edit" asp-route-id="@item.IdProveedor">Editar</a> |
+                        <a asp-action="Details" asp-route-id="@item.IdProveedor">Detalles</a> |
+                        <a asp-action="Delete" asp-route-id="@item.IdProveedor">Eliminar</a>
                     </td>
                 </tr>
             }
